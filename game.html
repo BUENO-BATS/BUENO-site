@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>لعبة BUENOxBATS</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #0a0a0a;
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    h1 {
+      color: #ff003c;
+      text-shadow: 0 0 10px #ff003c;
+    }
+    #game {
+      margin-top: 20px;
+      padding: 20px;
+      background-color: #1a1a1a;
+      border-radius: 8px;
+      text-align: center;
+    }
+    button {
+      background-color: #ff003c;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+    button:hover {
+      background-color: #ff3366;
+    }
+    #score {
+      font-size: 20px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>لعبة BUENOxBATS</h1>
+  <div id="game">
+    <p>اضغط على الاسم لما يكون ظاهر!</p>
+    <h2 id="target">BUENOxBATS</h2>
+    <button onclick="hit()">اضغط!</button>
+    <div id="score">النقاط: 0</div>
+  </div>
+
+  <script>
+    let score = 0;
+    let visible = true;
+    const target = document.getElementById("target");
+
+    function toggleVisibility() {
+      visible = !visible;
+      target.style.visibility = visible ? 'visible' : 'hidden';
+    }
+
+    function hit() {
+      if (visible) {
+        score++;
+      } else {
+        score--;
+      }
+      document.getElementById("score").innerText = `النقاط: ${score}`;
+    }
+
+    setInterval(toggleVisibility, 1000);
+  </script>
+</body>
+</html>
